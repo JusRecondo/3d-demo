@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Demo</title>
+
+        <!-- A frame -->
+        <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+        <!-- Animation component -->
+        <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
+
+    </head>
+    <body>
+        <a-scene>
+            <a-assets>
+                <!-- texturas -->
+                <img id="snow" src="textures/snow.jpg">
+                <img id="snow-map" src="textures/snow-map.png">
+                
+                <img id="ice" src="textures/ice.jpg">
+                <img id="ice-map" src="textures/ice-map.png">
+
+                <img id="bronze" src="textures/bronze.jpg">
+                <img id="bronze-map" src="textures/bronze-map.png">
+                
+                <img id="metal" src="textures/metal.jpg">
+                <img id="metal-map" src="textures/metal-map.png">
+            </a-assets>
+            
+            <!-- ESFERA -->
+            <a-sphere 
+                id="esfera-link"
+                position="0 3 0" 
+                radius="1.5" 
+                color= "#141414"
+                roughness="0"
+                side="double"
+                animation__click="property: color; startEvents: click; easing: easeInSine; dur: 150; from: #141414; to: #fafafa"
+                animation__fusing="property: color; startEvents: mouseenter; easing: easeInSine; dur: 1000; from: #141414; to: #fafafa"
+                animation__mouseleave="property: color; startEvents: mouseleave; easing: easeInSine; dur: 1000; to: #141414">
+            </a-sphere>
+
+            <!-- torus knot -->
+             <!-- torus azul --> 
+            <a-torus-knot 
+                arc="200" 
+                p="3" 
+                q="20" radius="10" 
+                radius-tubular="0.2" 
+                position="0 1.5 -4"
+                side="double"
+                color="#ccc"
+                opacity="0.7"
+                shader="standard"
+                roughness="0"
+                scale="6 6 6">
+
+                <a-torus-knot 
+                arc="180" 
+                p="3" 
+                q="1" radius="8" 
+                radius-tubular="0.3" 
+                position="0 0 0"
+                color="#fafafa"
+                shader="standard"
+                roughness="0"
+                opacity="0.2">
+            </a-torus-knot>
+        </a-torus-knot>
+            
+            <!-- Circulo interno -->
+            <a-box 
+                color="#141414" 
+                width="5" 
+                height="3" 
+                depth="1"
+                scale="1 1 1"
+                position="0 2.5 10"
+                rotation="0 0 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    src="#snow"
+                    normal-map="snow-map"
+                    roughness="0.9"
+                    side="double">
+                </a-sphere> 
+            </a-box>
+
+            <a-box 
+                color="#141414" 
+                width="5" 
+                height="3" 
+                depth="1"
+                scale="1 1 1"
+                position="0 2.5 -10"
+                rotation="0 0 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    src="#ice"
+                    normal-map="ice-map"
+                    roughness="0.9"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <a-box 
+                color="#141414" 
+                width="5" 
+                height="3" 
+                depth="1"
+                scale="1 1 1"
+                position="-15 2.5 0.05"
+                rotation="0 90 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    src="#metal"
+                    normal-map="metal-map"
+                    roughness="0.2"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <a-box 
+                color="#141414" 
+                width="5" 
+                height="3" 
+                depth="1"
+                scale="1 1 1"
+                position="15 2.5 -0.05"
+                rotation="0 90 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    src="#bronze"
+                    normal-map="bronze-map"
+                    roughness="0.9"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <!-- Circulo externo -->
+            <a-box 
+                src="#ice"
+                normal-map="ice-map"
+                roughness="0.9" 
+                width="5" 
+                height="3" 
+                depth="4"
+                scale="1 1 1"
+                position="0 2.5 30"
+                rotation="0 0 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    color="#161616"
+                    roughness="0"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <a-box 
+                src="#metal"
+                normal-map="metal-map"
+                roughness="0.2" 
+                width="5" 
+                height="3" 
+                depth="4"
+                scale="1 1 1"
+                position="0 2.5 -30"
+                rotation="0 0 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    color="#161616"
+                    roughness="0"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <a-box 
+                src="#snow"
+                normal-map="snow-map"
+                roughness="0.9"
+                width="5" 
+                height="3" 
+                depth="4"
+                scale="1 1 1"
+                position="-30 2.5 0.15"
+                rotation="0 90 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    color="#161616"
+                    roughness="0"
+                    side="double">
+                </a-sphere>
+            </a-box>
+
+            <a-box 
+                src="#bronze"
+                normal-map="bronze-map"
+                roughness="0.9" 
+                width="5" 
+                height="3" 
+                depth="4"
+                scale="1 1 1"
+                position="30 2.5 -0.15"
+                rotation="0 90 90"
+                side="back">
+
+                <a-sphere 
+                    position="0 0 0" 
+                    radius="0.5" 
+                    color="#161616"
+                    roughness="0wd"
+                    side="double">
+                </a-sphere>
+            </a-box>
+            
+            <!-- camara -->
+            <a-entity position="10 0 100">
+                <a-camera>
+                    <a-entity cursor="fuse: true; fuseTimeout: 3000" 
+                        position="0 0 -1"
+                        geometry="primitive: sphere; radius: 0.015"
+                        material="color: #aaa; shader: flat;"
+                        animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+                        animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.1 0.1 0.1"
+                        animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1">
+                    </a-entity>
+                </a-camera>
+            </a-entity>
+
+            <a-sky color="#000"></a-sky>
+        </a-scene>
+
+        <script>
+            const link1 = document.querySelector( "#esfera-link" );
+            link1.addEventListener( "click", (e) => {
+                window.location.href = "https://bit.ly/314FiIy";
+            } );
+        </script>
+    </body>
+</html>
